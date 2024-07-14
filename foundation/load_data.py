@@ -1,5 +1,6 @@
 
 from datasets import load_dataset, ClassLabel
+import os
 
 #function almost exact copy from paper's github repo
 def load_glue_datasets(task_name, use_auth_token,cache_dir=None):
@@ -203,11 +204,11 @@ def load_ood_eval_datasets():
 
         for label in [0, 1]:
                 paws_qqp_subset, subset_name = load_paws_qqp_dataset(
-                path="/Users/zijie-machine/Documents/DeepLearning/Project/foundation/data/paws_qqp/dev_and_test.tsv", label=label)
+                path=os.path.abspath("./data/paws_qqp/dev_and_test.tsv"), label=label)
                 out_of_domain_eval_datasets[subset_name] = paws_qqp_subset
 
         for label in [0, 1]:
                 cola_ood_subset, subset_name = load_cola_ood_dataset(
-                path="/Users/zijie-machine/Documents/DeepLearning/Project/foundation/data/cola_ood/dev.tsv", label=label)
+                path=os.path.abspath("./data/cola_ood/dev.tsv"), label=label)
                 out_of_domain_eval_datasets[subset_name] = cola_ood_subset
         return out_of_domain_eval_datasets
