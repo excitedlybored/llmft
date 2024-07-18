@@ -52,8 +52,8 @@ import math
 import sys
 from tqdm.auto import tqdm
 
-if is_apex_available():
-    from apex import amp
+# if is_apex_available():
+#     from apex import amp
 
 
 # if is_fairscale_available():
@@ -817,9 +817,9 @@ class FtTrainer(Trainer):
 
         self.log(output.metrics)
 
-        if DebugOption.TPU_METRICS_DEBUG in self.args.debug:
-            # tpu-comment: Logging debug metrics for PyTorch/XLA (compile, execute times, ops, etc.)
-            xm.master_print(met.metrics_report())
+        # if DebugOption.TPU_METRICS_DEBUG in self.args.debug:
+        #     # tpu-comment: Logging debug metrics for PyTorch/XLA (compile, execute times, ops, etc.)
+        #     xm.master_print(met.metrics_report())
 
         self.control = self.callback_handler.on_evaluate(
             self.args, self.state, self.control, output.metrics)

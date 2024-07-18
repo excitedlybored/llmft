@@ -54,6 +54,35 @@ from llama_wrapper import LlamaWithLMClassifier
 
 logger = logging.getLogger(__name__)
 
+config_name = None
+base_model = "meta-llama/Meta-Llama-3-8B-Instruct"
+task_name = "mnli" #Options: rte, mnli, mnli-original, mnli-mismatched, hans, qqp, paws-qqp, cola, cola-ood 
+num_shots = 2 #2, 16, 32
+eval_task_name = "hans"
+
+padding = "max_length" #or "max_length" or False
+target_tokens = "ĠYes,ĠNo" #or "ĠNo,ĠYes"
+target_prefix = " answer: "
+separate_shots_by = "\n\n"
+target_tokens_logits_only = False
+max_seq_length = 2048 #256
+pattern = "{text1} question: {text2} Yes or No?"
+data_seed = 42
+training_seed = 42
+do_train = True
+do_eval = True
+do_predict = False
+max_eval_samples = None
+max_predict_samples = None
+test_file = None
+overwrite_cache = False
+output_dir = None
+dataset_cache_dir = None
+pad_to_max_length = False
+fp16 = False
+main_process_first=True
+max_train_samples=None
+
 
 def _load_model(model_args):
     config = AutoConfig.from_pretrained(
