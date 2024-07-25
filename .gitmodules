@@ -1,0 +1,3 @@
+[submodule "llmft"]
+	path = llmft
+	url = https://github.com/cs7643-neural-knight/llmft.git
